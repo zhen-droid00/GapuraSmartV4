@@ -1,0 +1,13 @@
+{
+  "id": "./",
+  "name": "Gapura Smart",
+  "short_name": "Gapura",
+  "lang": "id",
+  "description": "Referensi SOP, checklist, dan surat edaran operasional.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f3c2a",
+  "icons": [{ "src": "logo.png", "sizes": "447x447", "type": "image/png", "purpose": "any" }]
+}

@@ -1,0 +1,174 @@
+:root {
+  color-scheme: light;
+  --page: #e9eeeb;
+  --surface: #fff;
+  --subtle: #f4f7f5;
+  --text: #19372d;
+  --muted: #60736a;
+  --border: #dce5df;
+  --green: #0f3c2a;
+  --accent: #e8f3ec;
+  --warning: #fff5d9;
+  --warning-text: #745818;
+  --safe-top: var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
+  --safe-right: var(--safe-area-inset-right, env(safe-area-inset-right, 0px));
+  --safe-bottom: var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
+  --safe-left: var(--safe-area-inset-left, env(safe-area-inset-left, 0px));
+  --content-gutter: 24px;
+  --header-gutter: 22px;
+  --footer-gutter: 24px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--page);
+  color: var(--text);
+  overflow-x: hidden; /* Mengunci layar horizontal agar tidak offside */
+  width: 100%;
+}
+
+button, input, select { font: inherit; }
+button, a, input, select { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; min-height: 44px; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #c89127; outline-offset: 3px; }
+button:disabled { opacity: .5; cursor: default; }
+
+.app {
+  max-width: 760px;
+  margin: 0 auto; /* Menjaga aplikasi tetap di tengah tanpa tergeser */
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  box-shadow: 0 0 60px #17382b0b;
+  overflow: hidden;
+}
+
+.header {
+  flex-shrink: 0;
+  padding: calc(var(--header-gutter) + var(--safe-top)) max(var(--content-gutter), var(--safe-right)) var(--header-gutter) max(var(--content-gutter), var(--safe-left));
+  background: var(--green);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.brand img { background: white; border-radius: 10px; padding: 4px; object-fit: contain; }
+h1 { font-size: 19px; margin: 0; letter-spacing: -.4px; }
+.brand p { font-size: 12px; margin: 5px 0 0; color: #c3d7cc; }
+
+.icon-button { border: 1px solid var(--border); background: var(--subtle); color: var(--text); border-radius: 12px; min-width: 44px; flex-shrink: 0; }
+.header .icon-button { background: #ffffff12; border-color: #ffffff35; color: white; font-size: 24px; }
+
+.status-bar {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--accent);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.4;
+  flex-wrap: wrap; /* Mencegah teks terpotong di HP */
+}
+
+.status-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #438659; margin-right: 6px; }
+#connection-status { text-align: right; }
+
+.chat-box { flex: 1; min-height: 0; overflow-y: auto; padding: 28px max(var(--content-gutter), var(--safe-right)) 28px max(var(--content-gutter), var(--safe-left)); scroll-behavior: smooth; }
+.welcome { margin-bottom: 28px; }
+.eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 1.4px; color: var(--muted); }
+h2 { font-size: 27px; letter-spacing: -.8px; margin: 12px 0; }
+.welcome p { font-size: 14px; line-height: 1.6; color: var(--muted); max-width: 410px; }
+
+.topic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+.topic-button { padding: 16px; text-align: left; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); color: var(--text); font-size: 13px; font-weight: 600; line-height: 1.5; }
+.topic-button:hover, .quick-actions button:hover { background: var(--accent); }
+
+.message-wrapper { display: flex; margin: 16px 0; }
+.wrapper-user { justify-content: flex-end; }
+.message { max-width: 94%; font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+.user-msg { max-width: 85%; padding: 11px 16px; background: var(--green); color: white; border-radius: 16px 16px 4px 16px; white-space: pre-wrap; }
+.ai-msg { width: 100%; padding: 18px; background: var(--subtle); border: 1px solid var(--border); border-radius: 4px 16px 16px 16px; }
+.message h3 { font-size: 15px; margin: 0 0 12px; }
+.message ul { padding-left: 22px; }
+.message .topic-grid { margin-top: 12px; }
+
+.source-note { font-size: 12px; line-height: 1.6; background: var(--warning); color: var(--warning-text); padding: 12px; border-radius: 10px; margin: 0 0 16px; }
+.source-note p { margin: 0; }
+
+.checklist-item { display: flex; gap: 12px; align-items: flex-start; padding: 13px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+.checklist-item input { width: 20px; height: 20px; flex-shrink: 0; accent-color: var(--green); margin-top: 3px; }
+.checklist-item:has(input:checked) { color: var(--muted); }
+
+.session-controls { display: grid; gap: 8px; margin: 12px 0; font-size: 12px; }
+.session-controls input, .session-controls select { width: 100%; min-width: 0; min-height: 44px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text); font-size: 16px; }
+.small-button { padding: 8px 12px; border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 9px; font-size: 12px; }
+.progress { font-size: 12px; color: var(--muted); margin: 12px 0; }
+
+.circular-card { background: var(--surface); border: 1px solid var(--border); padding: 16px; border-radius: 12px; margin-top: 12px; }
+.circular-card p { margin: 8px 0; }
+.circular-card time { font-size: 12px; color: var(--muted); }
+.circular-card a { display: inline-block; color: var(--text); font-weight: 600; padding: 8px 0; }
+
+footer { flex-shrink: 0; border-top: 1px solid var(--border); padding: 12px max(var(--footer-gutter), var(--safe-right)) max(12px, var(--safe-bottom)) max(var(--footer-gutter), var(--safe-left)); background: var(--surface); }
+.keyboard-visible footer { padding-bottom: 12px; }
+.quick-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.quick-actions button { padding: 6px 12px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface); color: var(--text); font-size: 12px; min-height: 44px; }
+
+.input-area { display: flex; gap: 8px; align-items: center; }
+.input-area input { min-width: 0; flex: 1; border: 1px solid var(--border); border-radius: 12px; padding: 14px; background: var(--subtle); color: var(--text); font-size: 16px; }
+.send-button { width: 46px; height: 46px; flex-shrink: 0; border: 0; border-radius: 12px; background: var(--green); color: white; font-size: 24px; }
+.input-hint { font-size: 10px; color: var(--muted); margin: 9px 0 0; line-height: 1.5; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+[hidden] { display: none !important; }
+
+body.dark-mode {
+  color-scheme: dark;
+  --page: #0c1913;
+  --surface: #15251d;
+  --subtle: #1b2e24;
+  --text: #e4eee7;
+  --muted: #a9bcb0;
+  --border: #324a3c;
+  --green: #174c35;
+  --accent: #20392b;
+  --warning: #3a321c;
+  --warning-text: #eed698;
+}
+
+@media(max-width: 480px) {
+  :root { --content-gutter: 16px; --header-gutter: 16px; --footer-gutter: 12px; }
+  .status-bar { padding: 10px 16px; }
+  .chat-box { padding-top: 24px; padding-bottom: 24px; }
+  .topic-button { padding: 12px; font-size: 12px; }
+  h2 { font-size: 25px; }
+  .ai-msg { padding: 14px; }
+  .message { max-width: 100%; }
+  
+  /* Memaksa tombol menu menjadi 1 kolom vertikal di layar HP */
+  .topic-grid { grid-template-columns: 1fr; }
+}
+
+.status-bar { padding-left: max(16px, var(--safe-left)); padding-right: max(16px, var(--safe-right)); }
+@media (max-height: 480px) {
+  :root { --header-gutter: 8px; }
+  .brand p, .input-hint { display: none; }
+  footer { padding-top: 6px; }
+  .quick-actions { margin-bottom: 6px; }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  .chat-box { scroll-behavior: auto; }
+}

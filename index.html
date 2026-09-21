@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="theme-color" content="#0f3c2a">
+  <meta name="description" content="Referensi SOP, checklist, dan surat edaran Gapura Smart.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>Gapura Smart</title>
+  <script src="native.js" defer></script>
+  <script src="sop-data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="brand"><img src="logo.png" width="42" height="42" alt=""><div><h1>Gapura Smart</h1><p>Referensi operasional harian</p></div></div>
+      <button id="theme-btn" class="icon-button" aria-label="Aktifkan mode gelap" aria-pressed="false">☾</button>
+    </header>
+    <div class="status-bar"><span><span class="status-dot"></span>Utamakan Safety &amp; Security</span><span id="connection-status" role="status">Online</span><a id="app-update" href="update.html" hidden>Versi baru tersedia · Perbarui</a></div>
+    <section class="chat-box" id="chat-box" aria-label="Percakapan dan hasil pencarian">
+      <div class="welcome"><span class="eyebrow">SELAMAT DATANG, GAPURA WARRIORS</span><h2>Apa yang ingin kamu cek?</h2><p>Temukan panduan operasional atau lanjutkan checklist persiapanmu.</p><div class="topic-grid" id="welcome-topics"></div></div>
+    </section>
+    <div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+    <footer>
+      <nav class="quick-actions" aria-label="Akses cepat"><button data-action="menu">Semua topik</button><button data-action="checklist">📋 Checklist</button><button data-action="circular">📢 Circular</button></nav>
+      <form id="search-form" class="input-area"><label for="user-input" class="sr-only">Pertanyaan seputar SOP</label><input type="text" id="user-input" placeholder="Contoh: bagaimana jika delay?" autocomplete="off" maxlength="1000"><button type="button" class="icon-button" id="mic-btn" aria-label="Mulai pencarian suara" hidden>🎙</button><button type="submit" class="send-button" aria-label="Kirim pertanyaan">↑</button></form>
+      <p id="input-status" class="input-hint" role="status">Panduan ringkas • Periksa dokumen resmi sebelum digunakan</p>
+    </footer>
+  </main>
+</body>
+</html>
